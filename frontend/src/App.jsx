@@ -14,7 +14,6 @@ import AuthWrapper from './AuthWrapper';
 import ResetPasswordPage2 from './pages/creators/resetPassword';
 import ParticipatePage from './pages/creators/participate';
 import RedeemPage from './pages/creators/redeem';
-import PaymentForm from './pages/brands/PaymentForm';
 
 
 function App() {
