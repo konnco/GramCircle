@@ -134,7 +134,7 @@ const LogInPageC = () => {
                         </div>
                         <button className="bg-[#c51c1c] text-xl py-2 rounded-xl" onClick={handleLogin}>Login</button>
                     </form>
-                    <Link to ="/creator/reset-password" className="text-white text-sm text-center flex justify-center mt-2" to="/creator/reset-password">Forgot password ?</Link>
+                    <Link to ="/creator/reset-password" className="text-white text-sm text-center flex justify-center mt-2">Forgot password ?</Link>
                     <div className="flex items-center justify-center gap-4 mt-6">
                         <hr className="w-2/5 bg-[#4D4D4D]" />
                         <p className="text-[#4D4D4D]">Or</p>
