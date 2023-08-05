@@ -8,7 +8,6 @@ import instagram from '../../assets/homepage/Instagram.png';
 import { supabase, getRememberMeSession } from '../../../supabase.js'
 import { useNavigate } from 'react-router'
 import { loadStripe } from "@stripe/stripe-js";
-import PaymentForm from "./PaymentForm";
 import { Link, Route, Routes, useResolvedPath } from "react-router-dom";
 import { CardElement, Elements } from "@stripe/react-stripe-js";
 
