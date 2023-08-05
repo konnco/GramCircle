@@ -1,0 +1,82 @@
+
+
+.catdeals {
+    padding: 50px;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+#first {
+    background: linear-gradient(rgba(55, 51, 51, 0.5), rgba(55, 51, 51, 0.5)), url('../../assets/creator/retail-gram.jpeg');
+    background-size: cover; 
+    background-repeat:no-repeat;
+}
+#second {
+    background: linear-gradient(rgba(55, 51, 51, 0.5), rgba(55, 51, 51, 0.5)), url('../../assets/creator/freepik-4.jpeg');
+    background-size: cover; 
+    background-repeat:no-repeat;
+}
+#second {
+    background: linear-gradient(rgba(55, 51, 51, 0.5), rgba(55, 51, 51, 0.5)), url('../../assets/creator/freepik-4.jpeg');
+    background-size: cover; 
+    background-repeat:no-repeat;
+}
+#third {
+    background: linear-gradient(rgba(55, 51, 51, 0.5), rgba(55, 51, 51, 0.5)), url('../../assets/creator/gym.jpeg');
+    background-size: cover; 
+    background-repeat:no-repeat;
+}
+#fourth {
+    background: linear-gradient(rgba(55, 51, 51, 0.5), rgba(55, 51, 51, 0.5)), url('../../assets/creator/mensclothing.jpg');
+    background-size: cover; 
+    background-repeat:no-repeat;
+}
+#fifth {
+    background: linear-gradient(rgba(55, 51, 51, 0.5), rgba(55, 51, 51, 0.5)), url('../../assets/creator/womens.png');
+    background-size: cover; 
+    background-repeat:no-repeat;
+}
+#sixth {
+    background: linear-gradient(rgba(55, 51, 51, 0.5), rgba(55, 51, 51, 0.5)), url('../../assets/creator/fashion.png');
+    background-size: cover; 
+    background-repeat:no-repeat;
+}
+#seventh {
+    background: linear-gradient(rgba(55, 51, 51, 0.5), rgba(55, 51, 51, 0.5)), url('../../assets/creator/babies.png');
+    background-size: cover; 
+    background-repeat:no-repeat;
+}
+#eigth {
+    background: linear-gradient(rgba(55, 51, 51, 0.5), rgba(55, 51, 51, 0.5)), url('../../assets/creator/freepik-2.jpeg');
+    background-size: cover; 
+    background-repeat:no-repeat;
+}
+#ninth {
+    background: linear-gradient(rgba(55, 51, 51, 0.5), rgba(55, 51, 51, 0.5)), url('../../assets/creator/house.png');
+    background-size: cover; 
+    background-repeat:no-repeat;
+}
+.bgimg1 {
+    background-size: cover; 
+    background-repeat:no-repeat;
+}
+.cat {
+    padding: 20px;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+.r {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.card {
+    max-width: 90%;
+    min-width: calc(1200px / 6);
+    background: red;
+    height: 150px;
+  }
+  
