@@ -3,7 +3,6 @@ import googleLogo from "../../assets/brand/google-logo.png"
 import facebookLogo from "../../assets/brand/facebook-logo.png"
 import yellowCirlce1 from "../../assets/brand/yellow1.png"
 import yellowCirlce2 from "../../assets/brand/yellow2.png"
-import firebaseUtils from "../../../../backend/firebase"
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase, getRememberMeSession, setRememberMeSession } from '../../../supabase.js'
