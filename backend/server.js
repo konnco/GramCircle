@@ -1,6 +1,5 @@
 const { supabase } = require("./supabase-backend.js");
 const express = require('express');
-const serverless = require('serverless-http')
 const cors = require('cors');
 const app = express();
 app.use(cors()); 
@@ -184,9 +183,7 @@ app.get('/api/signup-creator', (req, res) => {
 });
 
 // Start the server on a specific port (e.g., 5000)
-/* const port = 3000;
+const port = 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
-}); */
-
-modules.export.handler = serverless(app);
+}); 
