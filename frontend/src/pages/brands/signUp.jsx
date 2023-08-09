@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Accounts from "../../components/accounts";
 import yellowCirlce1 from "../../assets/brand/yellow1.png";
 import yellowCirlce2 from "../../assets/brand/yellow2.png";
-import { supabase } from '../../../supabase.js'
+import { supabaseBrand } from '../../../supabase.js'
 
 
 
@@ -59,11 +59,10 @@ const SignUpPage = () => {
       window.alert("Passwords do not match");
       return;
     }
-
-
+  
     try {
       // Example: Sign up using email/password
-      const { data, error } = await supabase.auth.signUp({
+      const { data, error } = await supabaseBrand.auth.signUp({
         email: email,
         password: confirmPassword,
         options: {
@@ -76,11 +75,9 @@ const SignUpPage = () => {
           },
         },
       });
-
-      window.alert(data.user.identities.length)
-
+  
       if (data.user && data.user.identities && data.user.identities.length === 0){
-        window.alert("User has already signed up!")
+        window.alert("User has already signed up!");
       }
   
       if (data) {
@@ -92,13 +89,8 @@ const SignUpPage = () => {
         setShowPopup(true);
       }
     } catch (error) {
-      if (error) {
-        // Handle error1 using alert
-        window.alert("Error signing up: " + error.message);
-      } else {
-        // Handle other errors
-        console.error("Error signing up:", error.message);
-      }
+      // Handle all errors using window.alert
+      window.alert("Error signing up: " + error.message);
     }
   };
   const { token } = useParams();
@@ -129,6 +121,10 @@ const SignUpPage = () => {
   }, [token]);
 
     return (
+      <div>
+      <div className="hidden md:flex items-center justify-between md:pt-[1.69%] pt-[2.55rem] md:px-8 pr-[1.9%] md:pb-[1.69%] pb-[1.69%] pl-[1.56%]" style={{backgroundColor:'#10194D', color:'white'}}> 
+      <img src={gramCircleLogo} alt="Gram Circle (logo)" className="md:w-[6rem] w-[4rem]" />
+      </div>
         <div className="bg-[#10194D] w-full relative md:px-14 px-3 md:py-8 py-4 min-h-screen">
             <h3 className="text-[#F7E135] md:text-6xl text-3xl font-normal">Create Profile</h3>
             <div className="bg-black/10 backdrop-blur-xl md:px-5 px-3 md:py-5 py-3 pb-10 md:mt-8 mt-5 rounded-lg border relative z-40">
@@ -281,6 +277,7 @@ const SignUpPage = () => {
                 <img src={yellowCirlce1} alt="yellow-circle" className="absolute md:w-52 w-36 top-6 md:right-32 right-1" />
                 <img src={yellowCirlce2} alt="yellow-circle" className="z-0 absolute md:w-40 w-28 md:right-96 right-32 md:bottom-1 bottom-32" />
             </>
+        </div>
         </div>
     );
 }

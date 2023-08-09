@@ -8,6 +8,8 @@ import { getRememberMeSession } from "../../../supabase-creator";
 import { useState } from "react";
 import { useEffect } from "react";
 import { supabase, setRememberMeSession } from '../../../supabase-creator.js'
+import gramCircleLogo from "../../assets/homepage/gramcircleLogo.png";
+
 const LogInPageC = () => {
     const [isSignedIn, setIsSignedIn] = useState(false);
     const [rememberMe, setRememberMe] = useState(false);
@@ -68,11 +70,12 @@ const LogInPageC = () => {
   
         
             if (error) {
-              console.error('Error signing in:', error);
+              window.alert('Error signing in: ' + error);
               return;
             }
-  
+            
             navigateTo("/creator")
+
         
             // Store the session data in the browser's local storage if "Remember Me" is checked
             if (rememberMe) {
@@ -82,16 +85,61 @@ const LogInPageC = () => {
             setError(error.message);
           }
         };
+
+
+        
+      const handleGoogleLogin = async (event) => {
+        event.preventDefault();
+        try {
+          supabase.auth.signInWithOAuth({
+            provider: 'google',
+          })
+
+
+          if (error) {
+            console.error('Error signing in:', error);
+            return;
+          }
+
+          navigateTo("/creator")
+      
+          // Store the session data in the browser's local storage if "Remember Me" is checked
+          if (rememberMe) {
+            setRememberMeSession(session);
+          }
+        } catch (error) {
+          setError(error.message);
+        }
+      };
+
+      const handleFacebookLogin = async (event) => {
+        event.preventDefault();
+        try {
+          supabase.auth.signInWithOAuth({
+            provider: 'facebook',
+          })
+
+
+          if (error) {
+            console.error('Error signing in:', error);
+            return;
+          }
+
+          navigateTo("/creator")
+      
+          // Store the session data in the browser's local storage if "Remember Me" is checked
+          if (rememberMe) {
+            setRememberMeSession(session);
+          }
+        } catch (error) {
+          setError(error.message);
+        }
+      };
         
     return (
         <div>
         <div className="hidden md:flex items-center justify-between md:pt-[1.69%] pt-[2.55rem] md:px-8 pr-[1.9%] md:pb-[1.69%] pb-[1.69%] pl-[1.56%]" style={{backgroundColor:'#10194D', color:'white'}}> 
-        <Link className="font-[600] md:text-[1.875rem] text-[1.2rem] m-0" to="/">Gram Circle(logo)</Link>
-        <div className="flex items-center justify-center md:gap-[2.35rem] gap-2" >
-            <button className="font-[600] md:text-[1.5625rem] text-[1rem] m-0 bg-inherit border-none text-[#fff] cursor-pointer hover:border-solid border-b-[#62f6ff] border-b-[3px]">Participate</button>
-            <button className="font-[600] md:text-[1.5625rem] text-[1rem] m-0 bg-inherit border-none text-[#fff] cursor-pointer hover:border-solid border-b-[#62f6ff] border-b-[3px]">Redeem</button>
-            <Link className="font-[600] md:text-[1.5625rem] text-[1rem] m-0 bg-inherit border-none text-[#fff] cursor-pointer hover:border-solid border-b-[#62f6ff] border-b-[3px]" to="/creator/login">Sign In</Link>
-        </div>
+        <img src={gramCircleLogo} alt="Gram Circle (logo)" className="md:w-[6rem] w-[4rem]" />
         </div>
         <div className="w-full min-h-screen md:flex bg-[#10194D] md:px-8 px-0 md:py-10 relative">
  
@@ -141,8 +189,8 @@ const LogInPageC = () => {
                         <hr className="w-2/5 bg-[#4D4D4D]" />
                     </div>
                     <div className="flex justify-center gap-4">
-                        <Link><img src={googleLogo} alt="google-logo" className="" /></Link>
-                        <Link><img src={facebookLogo} alt="facebook-logo" /></Link>
+                        <Link onClick={handleGoogleLogin}><img src={googleLogo} alt="google-logo" className="" /></Link>
+                        <Link onClick={handleFacebookLogin}><img src={facebookLogo} alt="facebook-logo" /></Link>
                     </div>
                     <div className="flex text-sm justify-center gap-1 md:mt-36 mt-72">
                         <p>Don't have an account ?</p>

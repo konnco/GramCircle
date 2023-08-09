@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import bgImage from '../../assets/brand/yellowcirclesgram.svg'
 import { platformOptions, assetsOptions, itemOptions } from '../../utils/options.js'
 import { useNavigate } from 'react-router'
-import { supabase, getRememberMeSession } from '../../../supabase.js'
+import { supabaseBrand, getRememberMeSession } from '../../../supabase.js'
 
 import axios from 'axios';
 
@@ -15,14 +15,15 @@ const CreateCampaignPage = () => {
     const [isSignedIn, setIsSignedIn] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const handlePopupClose = () => {
-        setShowPopup(false); // Close the popup by updating the state
+        setShowPopup(false);
+        navigateTo("/brand/campaign-manager") // Close the popup by updating the state
       };
 
     useEffect(() => {
         const checkUserAuthentication = async () => {
           try {
-            const { data, error } = await supabase.auth.getSession();
-            console.log(data)
+            const { data, error } = await supabaseBrand.auth.getSession();
+    
     
             if (data.session != null) {
               setIsSignedIn(true);
@@ -44,7 +45,7 @@ const CreateCampaignPage = () => {
         const storedSession = getRememberMeSession();
         if (storedSession) {
           try {
-            supabase.auth.setSession(storedSession);
+            supabaseBrand.auth.setSession(storedSession);
             setIsSignedIn(true);
           } catch (error) {
             console.error('Error restoring session:', error);
@@ -83,7 +84,7 @@ const CreateCampaignPage = () => {
     
         // Assuming you have the form data available in 'formData' state
         try {
-            const { data, error } = await supabase.auth.getUser();
+            const { data, error } = await supabaseBrand.auth.getUser();
 
             if (error) {
               console.error('Error getting user data:', error);
@@ -94,7 +95,7 @@ const CreateCampaignPage = () => {
             // Extract the user data (including the token) from the response
             const user = data;
 
-            const session = await supabase.auth.getSession();
+            const session = await supabaseBrand.auth.getSession();
             console.log()
             if (!session.data.session.access_token) {
                 console.error('User not authenticated');
