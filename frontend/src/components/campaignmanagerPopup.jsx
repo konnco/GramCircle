@@ -126,7 +126,7 @@ const CampaignDetailsPopup = ({ campaign, onClose }) => {
           <div className="bg-white p-4 rounded-lg shadow-lg">
             <h3 className="text-xl font-bold mb-2">Campaign Deleted Successfully</h3>
             <button
-              className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+              className="mt-4 bg-[#10163F] hover:bg-blue-600 text-white py-2 px-4 rounded"
               onClick={() => {
                 setShowDeletePopup(false);
                 onClose();
@@ -207,13 +207,13 @@ const CampaignDetailsPopup = ({ campaign, onClose }) => {
             className="border p-2 w-full rounded"
           />
           <button
-            className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+            className="mt-4 bg-[#10163F] hover:bg-blue-600 text-white py-2 px-4 rounded"
             onClick={() => handleSubmitRedemptionLink(selectedCampaign)}
           >
             Submit
           </button>
           <button
-            className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+            className="mt-4 bg-[#10163F] hover:bg-blue-600 text-white py-2 px-4 rounded"
             onClick={() => setShowSubmitLinkPopup(false)}
           >
             Cancel
