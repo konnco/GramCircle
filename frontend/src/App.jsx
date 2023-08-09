@@ -14,6 +14,8 @@ import AuthWrapper from './AuthWrapper';
 import ResetPasswordPage2 from './pages/creators/resetPassword';
 import ParticipatePage from './pages/creators/participate';
 import RedeemPage from './pages/creators/redeem';
+import UpdatePasswordBrand from './pages/brands/updatePasswordBrand';
+import UpdatePasswordCreator from './pages/creators/updatePasswordCreator';
 
 
 function App() {
@@ -35,6 +37,9 @@ function App() {
           <Route path='/creator/signup' element={<SignUpPage2 />} />
           <Route path='/creator/participate' element ={<ParticipatePage />} />
           <Route path='/creator/redeem' element ={<RedeemPage />} />
+          <Route path='/brand/update-password/' element ={<UpdatePasswordBrand />} />
+          <Route path='/creator/update-password/' element ={<UpdatePasswordCreator />} />
+          
 
         </Routes>
       </div>

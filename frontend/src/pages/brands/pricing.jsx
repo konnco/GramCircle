@@ -5,7 +5,7 @@ import google from '../../assets/homepage/google.png';
 import facebook from '../../assets/homepage/Facebook.png';
 import tiktok from '../../assets/homepage/tiktok.png';
 import instagram from '../../assets/homepage/Instagram.png';
-import { supabase, getRememberMeSession } from '../../../supabase.js'
+import { supabaseBrand, getRememberMeSession } from '../../../supabase.js'
 import { useNavigate } from 'react-router'
 import { loadStripe } from "@stripe/stripe-js";
 import { Link, Route, Routes, useResolvedPath } from "react-router-dom";
@@ -23,19 +23,19 @@ const PricingPage = () => {
     useEffect(() => {
         const checkUserAuthentication = async () => {
           try {
-            const { data, error } = await supabase.auth.getSession();
+            const { data, error } = await supabaseBrand.auth.getSession();
             console.log(data)
     
             if (data.session != null) {
               setIsSignedIn(true);
             } else {
               setIsSignedIn(false);
-              navigateTo("/brand/login");
+              navigateTo("/brand/login", {replace: true});
             }
           } catch (error) {
             console.error('Error checking user authentication:', error);
             setIsSignedIn(false);
-            navigateTo("/brand/login");
+            navigateTo("/brand/login", {replace: true});
           }
         };
     
@@ -46,7 +46,7 @@ const PricingPage = () => {
         const storedSession = getRememberMeSession();
         if (storedSession) {
           try {
-            supabase.auth.setSession(storedSession);
+            supabaseBrand.auth.setSession(storedSession);
             setIsSignedIn(true);
           } catch (error) {
             console.error('Error restoring session:', error);

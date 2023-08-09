@@ -22,7 +22,7 @@ const CreatorHomePage = () => {
         const checkUserAuthentication = async () => {
           try {
             const { data, error } = await supabase.auth.getSession();
-            console.log(data)
+
     
             if (data.session != null) {
               setIsSignedIn(true);

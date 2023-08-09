@@ -3,8 +3,8 @@ import brandGirl from "../assets/brand/brandgirl.svg"
 import gramCircleLogo from "../assets/homepage/gramcircleLogo.png";
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { supabase, getRememberMeSession } from "../../supabase";
-
+import { supabaseBrand, getRememberMeSession } from "../../supabase";
+import Typewriter from "typewriter-effect";
 
 const BrandHero = () => {
     const blueBackground = {
@@ -18,7 +18,7 @@ const BrandHero = () => {
     useEffect(() => {
       const checkUserAuthentication = async () => {
         try {
-          const { data, error } = await supabase.auth.getSession();
+          const { data, error } = await supabaseBrand.auth.getSession();
           console.log(data)
   
           if (data.session != null) {
@@ -53,7 +53,7 @@ const BrandHero = () => {
 
   const handleSignOut = async () => {
     try {
-      const { error } = await supabase.auth.signOut();
+      const { error } = await supabaseBrand.auth.signOut();
       if (error) {
         throw new Error('Error signing out:', error);
       }
@@ -135,8 +135,27 @@ const BrandHero = () => {
             </div>
             <div className="flex w-full md:px-8 px-3 md:flex-row flex-col">
                 <div className="md:w-2/5 w-full">
-                    <p className="md:text-[4rem] text-[3rem] font-normal text-[#F7E135] md:w-[90%] md:mt-6 mt-2">Harness the power of <br /> <span className="italic">influence</span></p>
-                    <p className="md:text-[2.9rem] text-[1.9rem] text-[#F01818] w-[70%] font-normal md:mt-6 mt-1">Plans Starting at $188 Only!</p>
+                    <p className="md:text-[4rem] text-[3rem] font-normal text-[#F7E135] md:w-[90%] md:mt-6 mt-2">Harness the power of <span className="italic">influence</span></p>
+                    <p className="md:text-[2.9rem] text-[1.9rem] text-[#F01818] w-[70%] font-normal md:mt-6 mt-1">
+                    <Typewriter
+
+                        options={{
+                            deleteSpeed: 50,
+                            autoStart: true,
+                            loop: true,
+                            wrapperClassName: 'head_tags'
+                        }}
+ 
+                onInit={(typewriter) => {
+                    typewriter
+                        .typeString("Plans Starting At")
+                        .pauseFor(1000)
+                        .deleteAll()
+                        .typeString("$188 only")
+                        .pauseFor(1000)
+                        .start();
+                }}
+            /></p>
                     <p className="font-normal md:text-[2.1rem] text-[1.3rem] text-[#F01818] md:mt-10 mt-6">Get Started</p>
                     <div className="md:mt-4 mt-2 flex justify-start items-center">
                         <input type="email" name="email" className="bg-inherit border md:text-[1.2rem] text-[0.9rem] text-white md:pl-2.5 pl-2 py-1 md:w-3/5 w-[70%]" placeholder="Drop your email"  value={email} onChange={handleEmailChange} />

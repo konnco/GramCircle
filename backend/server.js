@@ -1,4 +1,5 @@
 const { supabase } = require("./supabase-backend.js");
+const { supabaseCreator } = require("./supabase-backend-creator.js");
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -146,7 +147,51 @@ app.post('/api/create-campaign', async (req, res) => {
         chanel_asset: postData.chanelAsset,
         exchange: postData.exchange,
         details: postData.details,
-        depends: postData.depends
+        depends: postData.depends,
+        objective: postData.objective, // Add the 'objective' field to the formData state
+        description: postData.description, // Add the 'description' field to the formData state
+        campaignName: postData.campaignName,
+      },
+    ]);
+
+
+
+    if (error) {
+      console.error('Error inserting campaign data:', error);
+      return res.status(500).json({ error: 'Failed to create the campaign' });
+    }
+
+    return res.status(200).json({ success: true, message: 'Campaign created successfully' });
+  } catch (error) {
+    console.error('Error creating campaign:', error);
+    return res.status(500).json({ error: 'An error occurred while creating the campaign' });
+  }
+});
+
+
+// Add a new route for handling campaign creation
+app.post('/api/create-active-campaign', async (req, res) => {
+  try {
+   
+
+    // Assuming you have a 'campaigns' table in your Supabase database
+    // and a corresponding user is signed in (you can access the user from the session)
+    const token =  req.header('Authorization') // Replace this with how you access the signed-in user's data
+
+    if (!token) {
+      return res.status(401).json({ error: 'User not authenticated' });
+    }
+
+    const postData = req.body;
+
+    console.log(postData)
+    // Insert the campaign data into the 'campaigns' table
+    const { data, error } = await supabaseCreator.from('activeCampaigns').insert([
+      {
+        campaign_id: postData.campaign_id,
+        user_id: postData.user.id,
+        campaign_data: postData.campaign_data,
+        userName: postData.userName
       },
     ]);
 
