@@ -154,6 +154,13 @@ app.post('/api/create-campaign', async (req, res) => {
       },
     ]);
 
+    app.use('/brand/assets', express.static('path/to/your/assets', { 
+      setHeaders: (res, path) => {
+        if (path.endsWith('.css')) {
+          res.setHeader('Content-Type', 'text/css');
+        }
+      }
+    }));
 
 
     if (error) {

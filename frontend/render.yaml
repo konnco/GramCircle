@@ -1,0 +1,4 @@
+routes:
+  - src: "/brand/assets/*.css"
+    headers:
+      Content-Type: text/css
