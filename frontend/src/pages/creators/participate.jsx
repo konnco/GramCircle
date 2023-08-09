@@ -21,6 +21,11 @@ const ParticipatePage = () => {
   const [participatedCampaigns, setParticipatedCampaigns] = useState([]);
   const [showRedeemPopup, setShowRedeemPopup] = useState(false);
   const [currentUser, setCurrentUser] = useState(null)
+  
+  const handleCloseAndNavigate = () => {
+    setShowRedeemPopup(false); // Close the redemption popup
+    window.location.reload(); // Navigate to the /creator/participate page
+  };
  
   
 
@@ -162,7 +167,7 @@ const fetchParticipatedCampaigns = async () => {
             setShowRedeemPopup(true);
             setParticipatedCampaigns([...participatedCampaigns, currentUser.id]);
             console.log(participatedCampaigns)
-            navigateTo("/brand")
+           
             // Perform any additional actions after successful campaign creation if required
           } else {
             // Campaign creation failed, handle error as needed
@@ -222,7 +227,8 @@ const fetchParticipatedCampaigns = async () => {
                     padding: "6px",
                     flex: "1",              // Add this line for flex layout
                   alignItems: "center",   // Add this line to center items vertically
-                  display: "flex"
+                  display: "flex",
+                  justifyContent: "center",
                   }}
                 >
                   Participated
@@ -252,7 +258,7 @@ const fetchParticipatedCampaigns = async () => {
             <p className="text-gray-600 mb-4">You can now check the Redeem page to insert your link to show your completion!</p>
             <button
               className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
-              onClick={() => setShowRedeemPopup(false)}
+              onClick={handleCloseAndNavigate}
             >
               Close
             </button>
