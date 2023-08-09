@@ -108,7 +108,7 @@ const SignUpPage = () => {
 
     const fetchEmailFromToken = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/signUp?token=${token}`);
+        const response = await fetch(`https://gramcircle.onrender.com/signUp?token=${token}`);
         const data = await response.json();
         if (!data) {
           navigateTo("/brand")

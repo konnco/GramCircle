@@ -10,7 +10,7 @@ const bodyParser = require('body-parser'); // Import body-parser for parsing JSO
 function generateSignupLink(email) {
     // In this example, we are using a simple scheme to create the sign-up link.
     // You can use a more sophisticated approach with encryption or unique tokens.
-    const baseUrl = 'http://localhost:3000/api/signUp'; // Replace with your sign-up page URL
+    const baseUrl = 'https://gramcircle.onrender.com/api/signUp'; // Replace with your sign-up page URL
     const token = Buffer.from(email).toString('base64'); // Encode the email as a token
     return `${baseUrl}?token=${token}`;
   }
@@ -18,7 +18,7 @@ function generateSignupLink(email) {
   function generateSignupLinkCreator(email) {
     // In this example, we are using a simple scheme to create the sign-up link.
     // You can use a more sophisticated approach with encryption or unique tokens.
-    const baseUrl = 'http://localhost:3000/api/signUp-creator'; // Replace with your sign-up page URL
+    const baseUrl = 'https://gramcircle.onrender.com/api/signUp-creator'; // Replace with your sign-up page URL
     const token = Buffer.from(email).toString('base64'); // Encode the email as a token
     return `${baseUrl}?token=${token}`;
   }
@@ -115,7 +115,7 @@ app.get('/api/signup', (req, res) => {
     const email = Buffer.from(token, 'base64').toString('utf-8');
 
     // Redirect the user to the frontend sign-up page with the email query parameter filled in
-    return res.redirect(`http://localhost:5173/brand/signup?email=${encodeURIComponent(email)}`);
+    return res.redirect(`https://gramcirclefrontend.onrender.com/brand/signup?email=${encodeURIComponent(email)}`);
   } catch (error) {
     console.error('Error decoding token:', error);
     return res.status(500).json({ success: false, message: 'Error decoding token' });
@@ -175,7 +175,7 @@ app.get('/api/signup-creator', (req, res) => {
     const email = Buffer.from(token, 'base64').toString('utf-8');
 
     // Redirect the user to the frontend sign-up page with the email query parameter filled in
-    return res.redirect(`http://localhost:5173/creator/signup?email=${encodeURIComponent(email)}`);
+    return res.redirect(`https://gramcirclefrontend.onrender.com/creator/signup?email=${encodeURIComponent(email)}`);
   } catch (error) {
     console.error('Error decoding token:', error);
     return res.status(500).json({ success: false, message: 'Error decoding token' });

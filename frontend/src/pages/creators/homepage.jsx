@@ -78,7 +78,7 @@ const CreatorHomePage = () => {
       const handleSubmit = async () => {
         if (email) {
           try {
-            const response = await fetch('http://localhost:3000/api/send-signup-link-creator', {
+            const response = await fetch('https://gramcircle.onrender.com/api/send-signup-link-creator', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

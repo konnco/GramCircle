@@ -90,7 +90,7 @@ const BrandHomePage = () => {
   const handleSubmit = async () => {
     if (email) {
       try {
-        const response = await fetch('http://localhost:3000/api/send-signup-link', {
+        const response = await fetch('https://gramcircle.onrender.com/api/send-signup-link', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
