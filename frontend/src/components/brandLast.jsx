@@ -18,7 +18,6 @@ const BrandLast = () => {
                         <a href="#howDoesItWork">Sign Up Now</a>
                     </button>
                 </div>
-                <img src={lineImage} alt="line-image" className="absolute top-80 left-80 z-0 hidden md:block" />
                 <div className="md:w-1/2 w-full flex justify-center items-center md:mt-0 mt-16 pr-5">
                     <div className="bg-center bg-no-repeat bg-contain flex justify-center md:pl-20 pl-16 md:w-[82%] w-full mt-8 z-10" style={blueBackground}>
                         <img src={brandGirl} alt="brandgirl" />
