@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import insightIcon from "../assets/brand/insight.png"
 import analyticsIcon from "../assets/brand/analytics.png"
 import monitorIcon from "../assets/brand/monitor.png"
-import gramCircleLogo from "../assets/homepage/gramcirclelogobackground.png";
+import gramCircleLogo from "../assets/homepage/gramcirclelogobackground.PNG";
 
 const SideBar = (props) => {
     return (
