@@ -162,7 +162,7 @@ const fetchParticipatedCampaigns = async () => {
             setShowRedeemPopup(true);
             setParticipatedCampaigns([...participatedCampaigns, currentUser.id]);
             console.log(participatedCampaigns)
-            navigateTo("/brand")
+            navigateTo("/creator")
             // Perform any additional actions after successful campaign creation if required
           } else {
             // Campaign creation failed, handle error as needed
