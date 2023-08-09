@@ -107,7 +107,7 @@ const fetchParticipatedCampaigns = async () => {
   };
 
   const api = axios.create({
-    baseURL: 'http://localhost:3000/api', // Replace with the actual URL of your backend API
+    baseURL: 'https://gramcircle.onrender.com/api', // Replace with the actual URL of your backend API
   });
 
   const handleDealCardClick = (campaign) => {
