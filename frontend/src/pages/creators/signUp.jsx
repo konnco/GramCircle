@@ -82,10 +82,9 @@ const SignUpPage2 = () => {
               },
             },
           });
-    
-    
+      
           if (data.user && data.user.identities && data.user.identities.length === 0){
-            window.alert("User has already signed up!")
+            window.alert("User has already signed up!");
           }
       
           if (data) {
@@ -97,16 +96,10 @@ const SignUpPage2 = () => {
             setShowPopup(true);
           }
         } catch (error) {
-          if (error) {
-            // Handle error1 using alert
-            window.alert("Error signing up: " + error.message);
-          } else {
-            // Handle other errors
-            console.error("Error signing up:", error.message);
-          }
+          // Handle all errors using window.alert
+          window.alert("Error signing up: " + error.message);
         }
       };
-
       // New onChange handlers for form inputs
   const handleBusinessNameChange = (event) => {
     setBusinessName(event.target.value);
@@ -184,11 +177,6 @@ const SignUpPage2 = () => {
         <div>
         <div className="hidden md:flex items-center justify-between md:pt-[1.69%] pt-[2.55rem] md:px-8 pr-[1.9%] md:pb-[1.69%] pb-[1.69%] pl-[1.56%]" style={{backgroundColor:'#10194D', color:'white'}}> 
         <img src={gramCircleLogo} alt="Gram Circle (logo)" className="md:w-[6rem] w-[4rem]" />
-        <div className="flex items-center justify-center md:gap-[2.35rem] gap-2" >
-            <button className="font-[600] md:text-[1.5625rem] text-[1rem] m-0 bg-inherit border-none text-[#fff] cursor-pointer hover:border-solid border-b-[#62f6ff] border-b-[3px]">Participate</button>
-            <button className="font-[600] md:text-[1.5625rem] text-[1rem] m-0 bg-inherit border-none text-[#fff] cursor-pointer hover:border-solid border-b-[#62f6ff] border-b-[3px]">Redeem</button>
-            <Link className="font-[600] md:text-[1.5625rem] text-[1rem] m-0 bg-inherit border-none text-[#fff] cursor-pointer hover:border-solid border-b-[#62f6ff] border-b-[3px]" to="/creator/login">Sign In</Link>
-        </div>
         </div>
     
         <div className="bg-[#10194D] w-full relative md:px-14 px-3 md:py-8 py-4 min-h-screen">

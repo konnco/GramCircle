@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { supabase } from "../../supabase";
+import { supabaseBrand } from "../../supabase";
 
 const BrandHowDoesItWork = () => {
     const boxShadow = {
@@ -18,7 +18,7 @@ const BrandHowDoesItWork = () => {
 
   const handleSignOut = async () => {
     try {
-      const { error } = await supabase.auth.signOut();
+      const { error } = await supabaseBrand.auth.signOut();
       if (error) {
         throw new Error('Error signing out:', error);
       }

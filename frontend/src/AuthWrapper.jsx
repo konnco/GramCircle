@@ -1,7 +1,7 @@
 // AuthWrapper.js
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase, getRememberMeSession, setRememberMeSession } from "../supabase";
+import { supabaseBrand, getRememberMeSession, setRememberMeSession } from "../supabase";
 
 const AuthWrapper = ({ children }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -12,7 +12,7 @@ const AuthWrapper = ({ children }) => {
     const storedSession = getRememberMeSession();
     if (storedSession) {
       try {
-        supabase.auth.setSession(storedSession);
+        supabaseBrand.auth.setSession(storedSession);
         setIsSignedIn(true);
       } catch (error) {
         console.error('Error restoring session:', error);

@@ -9,7 +9,8 @@ import BrandHowDoesItWork from "../../components/brandHdw";
 import BrandLast from "../../components/brandLast";
 import BrandHero from "../../components/brandHero";
 import AuthWrapper from "../../AuthWrapper";
-import { supabase, getRememberMeSession } from '../../../supabase.js'
+import { supabaseBrand, getRememberMeSession } from '../../../supabase.js'
+
 
 
 
@@ -18,7 +19,7 @@ const BrandHomePage = () => {
   useEffect(() => {
     const checkUserAuthentication = async () => {
       try {
-        const { data, error } = await supabase.auth.getSession();
+        const { data, error } = await supabaseBrand.auth.getSession();
         console.log(data)
 
         if (data.session != null) {
@@ -39,7 +40,7 @@ const BrandHomePage = () => {
     const storedSession = getRememberMeSession();
     if (storedSession) {
       try {
-        supabase.auth.setSession(storedSession);
+        supabaseBrand.auth.setSession(storedSession);
         setIsSignedIn(true);
       } catch (error) {
         console.error('Error restoring session:', error);
@@ -61,7 +62,7 @@ const BrandHomePage = () => {
 
   const handleSignOut = async () => {
     try {
-      const { error } = await supabase.auth.signOut();
+      const { error } = await supabaseBrand.auth.signOut();
       if (error) {
         throw new Error('Error signing out:', error);
       }

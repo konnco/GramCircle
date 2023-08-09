@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 
 // Create a single supabase client for interacting with your database
-const supabase = createClient(
+const supabaseBrand = createClient(
   'https://bxuyjrcpcenvcjlqcyhx.supabase.co',
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4dXlqcmNwY2VudmNqbHFjeWh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTA3MzU4NzEsImV4cCI6MjAwNjMxMTg3MX0.DR_tVR-Bw-_WrEliLw1jbfjOfsWjvvIl30Z_0N6vMN8'
 );
@@ -19,4 +19,4 @@ const getRememberMeSession = () => {
   return sessionData ? JSON.parse(sessionData) : null;
 };
 
-export { supabase, setRememberMeSession, getRememberMeSession };
+export { supabaseBrand, setRememberMeSession, getRememberMeSession };

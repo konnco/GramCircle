@@ -5,7 +5,8 @@ import yellowCirlce1 from "../../assets/brand/yellow1.png"
 import yellowCirlce2 from "../../assets/brand/yellow2.png"
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase, getRememberMeSession, setRememberMeSession } from '../../../supabase.js'
+import { supabaseBrand, getRememberMeSession, setRememberMeSession } from '../../../supabase.js'
+import gramCircleLogo from "../../assets/homepage/gramcircleLogo.png";
 
 const LogInPage = () => {
 
@@ -16,7 +17,7 @@ const LogInPage = () => {
     useEffect(() => {
       const checkUserAuthentication = async () => {
         try {
-          const { data, error } = await supabase.auth.getSession();
+          const { data, error } = await supabaseBrand.auth.getSession();
           if (data.session != null) {
             setIsSignedIn(true);
           } else {
@@ -34,7 +35,7 @@ const LogInPage = () => {
         const storedSession = getRememberMeSession();
         if (storedSession && rememberMe) {
           try {
-            supabase.auth.setSession(storedSession);
+            supabaseBrand.auth.setSession(storedSession);
             setIsSignedIn(true);
             navigateTo("/brand");
           } catch (error) {
@@ -59,7 +60,7 @@ const LogInPage = () => {
     const handleLogin = async (event) => {
         event.preventDefault();
         try {
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabaseBrand.auth.signInWithPassword({
             email: email,
             password: password,
          })
@@ -67,6 +68,55 @@ const LogInPage = () => {
          console.log(data)
 
       
+          if (error) {
+            window.alert('Error signing in: ' + error);
+            return;
+          }
+
+          navigateTo("/brand")
+
+      
+          // Store the session data in the browser's local storage if "Remember Me" is checked
+          if (rememberMe) {
+            setRememberMeSession(session);
+          }
+        } catch (error) {
+          setError(error.message);
+        }
+      };
+
+      const handleGoogleLogin = async (event) => {
+        event.preventDefault();
+        try {
+          supabaseBrand.auth.signInWithOAuth({
+            provider: 'google',
+          })
+
+
+          if (error) {
+            console.error('Error signing in:', error);
+            return;
+          }
+
+          navigateTo("/brand")
+      
+          // Store the session data in the browser's local storage if "Remember Me" is checked
+          if (rememberMe) {
+            setRememberMeSession(session);
+          }
+        } catch (error) {
+          setError(error.message);
+        }
+      };
+
+      const handleFacebookLogin = async (event) => {
+        event.preventDefault();
+        try {
+          supabaseBrand.auth.signInWithOAuth({
+            provider: 'facebook',
+          })
+
+
           if (error) {
             console.error('Error signing in:', error);
             return;
@@ -84,6 +134,10 @@ const LogInPage = () => {
       };
 
     return (
+      <div>
+      <div className="hidden md:flex items-center justify-between md:pt-[1.69%] pt-[2.55rem] md:px-8 pr-[1.9%] md:pb-[1.69%] pb-[1.69%] pl-[1.56%]" style={{backgroundColor:'#10194D', color:'white'}}> 
+      <img src={gramCircleLogo} alt="Gram Circle (logo)" className="md:w-[6rem] w-[4rem]" />
+      </div>
         <div className="w-full min-h-screen md:flex bg-[#10194D] md:px-8 px-0 md:py-10 relative">
             <div className="w-3/5 md:flex items-center relative hidden">
                 <h2 className="text-[#F7E135] text-8xl mb-20">Welcome Back</h2>
@@ -131,8 +185,8 @@ const LogInPage = () => {
                         <hr className="w-2/5 bg-[#4D4D4D]" />
                     </div>
                     <div className="flex justify-center gap-4">
-                        <Link><img src={googleLogo} alt="google-logo" className="" /></Link>
-                        <Link><img src={facebookLogo} alt="facebook-logo" /></Link>
+                        <Link onClick={handleGoogleLogin}><img src={googleLogo} alt="google-logo" className="" /></Link>
+                        <Link onClick={handleFacebookLogin}><img src={facebookLogo} alt="facebook-logo" /></Link>
                     </div>
                     <div className="flex text-sm justify-evenly md:mt-2 mt-4 md:pb-0 pb-16">
                         <Link>Terms & Conditions</Link>
@@ -145,6 +199,7 @@ const LogInPage = () => {
                 <img src={yellowCirlce1} alt="circle1" className="absolute md:right-[32%] right-64 md:w-40 w-44 md:top-3 -top-2 z-0" />
                 <img src={yellowCirlce2} alt="circle2" className="absolute z-0 md:w-32 md:right-10 md:bottom-3 right-0 bottom-0" />
             </div>
+        </div>
         </div>
     );
 }
