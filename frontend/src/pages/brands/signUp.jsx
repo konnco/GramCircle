@@ -4,6 +4,8 @@ import Accounts from "../../components/accounts";
 import yellowCirlce1 from "../../assets/brand/yellow1.png";
 import yellowCirlce2 from "../../assets/brand/yellow2.png";
 import { supabaseBrand } from '../../../supabase.js'
+import gramCircleLogo from '../../assets/homepage/gramcircleLogo.png'
+
 
 
 
