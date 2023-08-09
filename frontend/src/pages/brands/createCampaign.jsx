@@ -226,7 +226,7 @@ const CreateCampaignPage = () => {
                     Campaign created successfully!
                   </p>
                   <button
-                    className="mt-3 bg-blue-500 text-white px-4 py-2 rounded" // Modify the popup button to be blue
+                    className="mt-3 bg-[#10163F] text-white px-4 py-2 rounded" // Modify the popup button to be blue
                     onClick={handlePopupClose}
                   >
                     Close

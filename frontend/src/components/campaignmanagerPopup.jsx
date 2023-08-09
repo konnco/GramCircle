@@ -9,6 +9,8 @@ const CampaignDetailsPopup = ({ campaign, onClose }) => {
   const [showSubmitLinkPopup, setShowSubmitLinkPopup] = useState(false);
   const [redemptionLink, setRedemptionLink] = useState('');
   const [selectedCampaign, setSelectedCampaign] = useState({});
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
+
 
   useEffect(() => {
     fetchSubmissions();
@@ -82,6 +84,23 @@ const CampaignDetailsPopup = ({ campaign, onClose }) => {
     }
   };
 
+  const handleDeleteCampaign = async () => {
+    try {
+      const { error } = await supabaseBrand
+        .from('campaigns')
+        .delete()
+        .eq('id', campaign.id);
+
+      if (error) {
+        console.error('Error deleting campaign:', error);
+      } else {
+        setShowDeletePopup(true);
+      }
+    } catch (error) {
+      console.error('Error deleting campaign:', error);
+    }
+  };
+
 
     return (
       <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-70">
@@ -95,6 +114,30 @@ const CampaignDetailsPopup = ({ campaign, onClose }) => {
           <p className="text-gray-600">Quantity: {campaign.details}</p>
           <p className="text-gray-600">Performance: {campaign.depends}</p>
         <button className="mt-4 bg-[#10163F] hover:bg-blue-600 text-white py-2 px-4 rounded" onClick={onClose}>Close</button>
+         {/* ... (rest of the component content) */}
+         <button
+          className="mt-4 mb-2 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded ml-2"
+          onClick={handleDeleteCampaign}
+        >
+          Delete Campaign
+        </button>
+        {showDeletePopup && (
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-70">
+          <div className="bg-white p-4 rounded-lg shadow-lg">
+            <h3 className="text-xl font-bold mb-2">Campaign Deleted Successfully</h3>
+            <button
+              className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+              onClick={() => {
+                setShowDeletePopup(false);
+                onClose();
+                window.location.reload(); // Refresh the page
+              }}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
         </div>
         {submissions.length > 0 && (
         <div className="bg-white p-4 mt-4 rounded-lg shadow-lg">
