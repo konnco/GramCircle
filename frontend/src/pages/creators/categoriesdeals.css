@@ -79,4 +79,23 @@
     background: red;
     height: 150px;
   }
-  
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.see-all-button {
+    width: 100%;
+    max-width: 32rem;
+
+    @media (min-width: 768px) {
+        width: auto;
+    }
+}
