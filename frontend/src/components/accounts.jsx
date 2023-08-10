@@ -22,14 +22,18 @@ const Accounts = ({ onSocialMediaChange, onSocialMediaNameChange }) => {
         <label htmlFor="socialMediaPlatform">
           Choose Social Media Platform <span className="text-red-500">*</span>
         </label>
-        <input
-          type="text"
+        <select
           name="socialMediaPlatform"
-          className="w-full bg-inherit border border-[#E54C4C] px-2 py-1 rounded-lg text-white text-lg"
-          placeholder="Social media name"
+          className="w-full bg-[#10194D] border border-[#E54C4C] px-2 py-1 rounded-lg text-white text-lg"
+          placeholder="Select a social media platform"
           value={socialMediaPlatform}
           onChange={handleSocialMediaChange}
-        />
+        >
+          <option value="Facebook">Facebook</option>
+          <option value="Twitter">Twitter</option>
+          <option value="Instagram">Instagram</option>
+          <option value="TikTok">Instagram</option>
+    </select>
       </div>
       <div className="flex flex-col gap-1">
         <label htmlFor="socialMediaAccount">
