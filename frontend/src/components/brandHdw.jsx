@@ -97,6 +97,22 @@ const BrandHowDoesItWork = () => {
                                 value={email} onChange={handleEmailChange}
                             />
                             <button className="bg-[#F01818] text-white px-2" onClick={handleSubmit} >SUBMIT</button>
+                            {showPopup && (
+        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-40">
+          <div className="bg-white p-5 rounded-lg text-center">
+            <p className="text-sm text-gray-500">
+              Your sign-up link has been sent to your email!<br />
+              Note: Please check your "Spam" folder if it is not in your inbox.
+            </p>
+            <button
+              className="mt-3 bg-[#F01818] text-white px-4 py-2 rounded"
+              onClick={handlePopupClose}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
                         </div>
                         <p className="text-sm text-black font-normal mt-2 pb-16">Already Registered? <Link to="/brand/login"> Login</Link></p>
                     </div>
