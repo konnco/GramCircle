@@ -80,7 +80,7 @@
     height: 150px;
   }
 
-.flex-container {
+  .flex-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,8 +94,37 @@
 .see-all-button {
     width: 100%;
     max-width: 32rem;
+    margin-top: 1rem;
 
     @media (min-width: 768px) {
         width: auto;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .catdeals {
+        padding: 10px; /* Adjust padding for better mobile spacing */
+    }
+
+    .cat p {
+        font-size: 1.5rem;
+    }
+
+    .r .bgimg1 {
+        max-width: 150px;
+        max-height: 50px;
+    }
+
+    .r .bgimg1 p {
+        font-size: 1.2rem;
+    }
+
+    .mySwiper {
+        width: 100%;
+    }
+
+    .see-all-button {
+        max-width: 100%;
     }
 }

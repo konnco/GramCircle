@@ -70,17 +70,20 @@ const CategoriesDeals = () => {
                 <div>
                     <p style={{fontSize: '3rem', color:'rgb(247 225 53 / var(--tw-text-opacity))'}}>Deals</p>
                    <div style={{maxWidth: 1200}}>
-                   <div className="flex-container">
-                    <Swiper
-                        slidesPerView={4}
-                        spaceBetween={30}
-                        pagination={{
-                            clickable: true,
-                        }}
-                        modules={[Pagination]}
-                        className="mySwiper"
-                    >
-                          <SwiperSlide style={{minWidth:100}}>          
+                   <div className="flex justify-between items-center">
+                 
+                <Swiper
+                    slidesPerView={4}
+                    spaceBetween={30}
+                    pagination={{
+                    clickable: true,
+                    }}
+                    modules={[Pagination]}
+                    className="mySwiper"
+                     >
+       
+       
+                        <SwiperSlide style={{minWidth:100}}>          
                         <DealCard1/>
                         </SwiperSlide >
 
@@ -95,16 +98,20 @@ const CategoriesDeals = () => {
                         <SwiperSlide style={{minWidth:100}}>          
                         <DealCard4/>
                         </SwiperSlide>
-                    </Swiper>
-                    <div className="see-all-button">
-                        <Link
-                            to="/creator/participate" // Update this with the actual path you want to redirect to
-                            className="bg-[#10163F] text-white md:text-xl text-lg font-normal px-5 py-3 rounded-lg w-full md:w-32 md:self-start self-center flex items-center justify-center"
+
+                        
+                      
+                        
+                        </Swiper>
+                        <div className="flex justify-end">
+            <Link
+                        to="/creator/participate" // Update this with the actual path you want to redirect to
+                        className="bg-[#10163F] text-white md:text-xl text-lg font-normal px-5 py-3 rounded-lg mt-8 w-32 md:self-start self-center flex items-center justify-center"
                         >
-                            See All
-                        </Link>
-                    </div>
-                </div>
+                        See All
+            </Link>
+            </div>
+          </div>
             </div>
         </div>
     </div>
