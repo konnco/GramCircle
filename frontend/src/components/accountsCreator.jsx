@@ -34,6 +34,7 @@ const AccountsCreator = ({ onSocialMediaChange, onSocialMediaNameChange }) => {
           <option value="Instagram">Instagram</option>
           <option value="TikTok">Instagram</option>
     </select>
+      </div>
       <div className="flex flex-col gap-1">
         <label htmlFor="socialMediaAccount">
           Social Media Account Username <span className="text-red-500">*</span>
